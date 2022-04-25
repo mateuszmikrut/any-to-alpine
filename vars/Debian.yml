@@ -1,0 +1,7 @@
+ata_depends:
+  - e2fsprogs
+  - btrfs-progs
+  - xfsprogs
+  - qemu-utils
+
+ata_hdd: /dev/sda

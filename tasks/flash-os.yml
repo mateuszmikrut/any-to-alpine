@@ -1,0 +1,26 @@
+- name: Flash disk
+  ansible.builtin.shell: |
+    dd if=letsgoski.img of={{ ata_hdd }}
+  
+- name: Kill the bastard
+  ansible.builtin.shell:
+    echo b > /proc/sysrq-trigger
+  async: 1
+  poll: 0
+
+- name: Clear known_host
+  ansible.builtin.lineinfile:
+    state: absent
+    path: ~/.ssh/known_hosts
+    search_string: "{{ item }}"
+  with_items:
+  - "{{ inventory_hostname_short }}"
+  - "{{ ansible_host }}"
+  - "{{ ansible_default_ipv4.address }}"
+  delegate_to: localhost
+  become: false
+
+- name: Wait for alpine
+  ansible.builtin.wait_for_connection:
+    delay: 5
+    timeout: 60  

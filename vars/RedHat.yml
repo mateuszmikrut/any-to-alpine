@@ -1,0 +1,8 @@
+### Rhel not ready yet
+ata_depends:
+  - e2fsprogs
+  - btrfs-progs
+  - xfsprogs
+  - qemu-img
+  
+ata_hdd: /dev/sda

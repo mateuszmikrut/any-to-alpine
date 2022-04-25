@@ -1,0 +1,15 @@
+- name: Remote OS check
+  ansible.builtin.fail:
+    msg: Right now remote build is only supported on Debian-ish OSes
+  when: ansible_os_family != "Debian"
+
+- name: Install dependencies
+  ansible.builtin.package:
+    name: "{{ ata_depends }}"
+    state: present
+
+## https://github.com/alpinelinux/alpine-make-vm-image
+- name: Build image
+  ansible.builtin.script: "alpine-make-vm-image -s 512M -f raw -p \"openssh-server openrc sudo bash e2fsprogs-extra python3 tar gzip vim unzip net-tools {{ ata_pkgs_to_add | default('') | join(' ') }}\" letsgoski.img -c letsgoski.bash"
+  args:
+    creates: "letsgoski.img"

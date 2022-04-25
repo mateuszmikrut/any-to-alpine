@@ -1,0 +1,5 @@
+### FreeBSD is not ready, fail on import
+ata_depends:
+  - e2fsprogs
+  - xfsprogs
+  - qemu-tools  

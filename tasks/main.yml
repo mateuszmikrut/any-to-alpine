@@ -1,0 +1,20 @@
+### Include OS vars
+- name: Include OS vars
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
+
+### Create alpine customization script
+- ansible.builtin.import_tasks: customization.yml
+
+### Build image remotely
+- ansible.builtin.import_tasks: remote-build.yml
+  when: ata_image_path is not defined
+
+### Just upload pre-built image
+- name: Upload pre built image
+  ansible.builtin.copy:
+    src: "{{ ata_image_path }}"
+    dest: letsgoski.img
+  when: ata_image_path is defined
+
+### Boot to alpine
+- ansible.builtin.import_tasks: flash-os.yml
