@@ -1,10 +1,12 @@
 - name: Flash disk
   ansible.builtin.shell: |
     dd if=letsgoski.img of={{ ata_hdd }}
+  changed_when: true
   
 - name: Kill the bastard
   ansible.builtin.shell:
     echo b > /proc/sysrq-trigger
+  changed_when: true
   async: 1
   poll: 0
 

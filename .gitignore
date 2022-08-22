@@ -1,0 +1,50 @@
+# Ansible
+*.retry
+*.log
+.vault_pass
+.vault_password
+vault_pass.txt
+vault_password.txt
+
+# Ansible Galaxy
+.galaxy_install_info
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Build artifacts
+*.iso
+*.img
+*.qcow2
+*.vmdk

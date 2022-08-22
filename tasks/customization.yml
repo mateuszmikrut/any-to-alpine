@@ -14,4 +14,4 @@
   ansible.builtin.fetch:
     src: letsgoski.bash
     dest: /tmp/letsgoski-{{ inventory_hostname }}.bash
-    flat: yes
+    flat: true
